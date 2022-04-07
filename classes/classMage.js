@@ -24,20 +24,30 @@ class Mage {
         else{
             this.experience = this.experience + exp;
         }
+        console.log("Mage a gagné " , exp , " en tuant le monstre, son expérience est maintenant de ", this.experience , " / ", this.experienceMax)
+   
     }
     
     attack(type = "CaC") {  // quand il attaque
         probaEchec = Math.random() * (11 - 1) + 1;
         if(probaEchec === 5){
+            console.log("Mage a attaqué le monstre ! Il a raté son attaque ");
+           
             return 0;
         }
         if(type === "sort" ){
             if(this.mana - 10 < 0){
+                console.log("Mage a attaqué le monstre ! Pas assez de mana, l'attaque a échoué")
+       
                 return 0;
             }
+            console.log("Mage a attaqué le monstre ! Le monstre a subit ", this.attackMagic , " dégats ")
+       
             return this.attackMagic;
 
         }
+        console.log("Mage a attaqué le monstre ! Le monstre a subit ", this.attackCaC , " dégats ")
+       
         return this.attackCaC;
     }
 
@@ -47,6 +57,8 @@ class Mage {
         if(this.life < 0 ){
             this.isAlive = false;
         }
+        console.log("Mage a été touché , il a subit  " , damageRecieved);
+           
 
     }
 
@@ -57,6 +69,9 @@ class Mage {
         else{
             this.life = this.life + 100 ;
         }
+
+        console.log("Mage s'est soigné, ses PV sont maintenant de   " , this.life);
+        
     }   
     
 }

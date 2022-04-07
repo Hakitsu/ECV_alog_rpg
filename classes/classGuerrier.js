@@ -57,7 +57,7 @@ class Guerrier {
             this.life = this.life + 100 ;
         }
 
-        console.log("Guerrier s'est soigné, ses PV sont maintentant de   " , this.life);
+        console.log("Guerrier s'est soigné, ses PV sont maintenant de   " , this.life);
         
     }   
     
