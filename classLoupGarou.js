@@ -1,18 +1,14 @@
-class Guerrier {
+class LoupGarou {
     
     constructor(selector) {
-    this.container = document.querySelector(selector);
-    this.lifeMax = 100;
-    this.life = 100;
-    this.defense = 100;
-    this.attackCaC = 50;
-    this.experience = 0;
-    this.lvl = 1;
-    this.experienceMax = 50;
-    this.isAlive = true;
+        this.container = document.querySelector(selector);
+        this.life = 30;
+        this.attack = 10;
+        this.experience = 10;
+        this.isAlive = true;
     }
 
-    set setExperience(exp){  // quand il tue un monstre
+    giveExperience(){  // quand il meurt
         if(this.experienceMax < this.experience + exp){
             this.lvl = this.lvl +1;
             this.experienceMax = this.experienceMax + 50;
@@ -24,7 +20,7 @@ class Guerrier {
     }
     
     attack() {  // quand il attaque
-        return this.attackCaC
+        return this.attack
     }
 
     touchByAttack(damageRecieved){  // quand il est attaqué
@@ -32,17 +28,9 @@ class Guerrier {
 
         if(this.life < 0 ){
             this.isAlive = false;
+            
         }
 
     }
-
-    heal() {  // quand il se soigne
-        if(this.lifeMax < this.life + 100){
-            this.life = this.lifeMax;
-        }
-        else{
-            this.life = this.life + 100 ;
-        }
-    }   
     
 }
