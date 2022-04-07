@@ -20,6 +20,10 @@ class LoupGarou {
     }
     
     attack() {  // quand il attaque
+        probaEchec = Math.random() * (11 - 1) + 1;
+        if(probaEchec === 5){
+            return 0;
+        }
         return this.attack
     }
 
