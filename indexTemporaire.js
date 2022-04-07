@@ -47,6 +47,10 @@ while(hero.isAlive === true){
                 monstre.touchByAttack(dmg)
             }
         }
+
+        if(monstre.isAlive === false){
+            hero.setExperience(monstre.experience)
+        }
         
 
     }
