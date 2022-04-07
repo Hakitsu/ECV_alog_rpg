@@ -1,6 +1,7 @@
 class Guerrier {
     
     constructor(selector) {
+    this.name = "guerrier"
     this.container = document.querySelector(selector);
     this.lifeMax = 100;
     this.life = 100;

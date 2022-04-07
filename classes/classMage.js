@@ -1,6 +1,7 @@
 class Mage {
     
     constructor(selector) {
+        this.name = "mage"
         this.container = document.querySelector(selector);
         this.lifeMax = 80;
         this.life = 80;
