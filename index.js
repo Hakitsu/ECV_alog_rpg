@@ -8,7 +8,7 @@ function changeTour(tour){
 }
 
 
-select_class = window.prompt("Choisissez votre classe : Guerrier / Mage ","Mage");
+select_class = window.prompt("Choisissez votre classe : Guerrier / Mage ","Guerrier");
 while(select_class.toLowerCase() != "guerrier" && select_class.toLowerCase() != "mage"){
     console.log("Vous devez choissire entre guerrier ou mage");
     select_class = window.prompt("Choisissez votre classe : Guerrier / Mage ","Guerrier");
@@ -31,12 +31,15 @@ while(hero.isAlive === true){
     if(tour === "H"){
         console.log("-------------"+hero.name+"-------------")
         if(hero.name === "guerrier"){
-            let action =  window.prompt("Que voulez vous faire ? soin / attaque","attaque")
-            while(action.toLowerCase() !== "soin" && action.toLowerCase() !== "attaque"  ){
-                 action =  window.prompt("Que voulez vous faire ? soin / attaque")
+            let action =  window.prompt("Que voulez vous faire ? soin / sort / attaque","attaque")
+            while(action.toLowerCase() !== "soin" && action.toLowerCase() !== "sort" && action.toLowerCase() !== "attaque"  ){
+                 action =  window.prompt("Que voulez vous faire ? soin / sort / attaque","attaque")
             }
             if(action.toLowerCase() === "soin"){
                 hero.heal()
+            }else if (action.toLowerCase() === "sort") {
+                let dmg = hero.attack("sort") 
+                monstre.touchByAttack(dmg)
             }
             else{
                 let dmg = hero.attack() 
@@ -82,5 +85,4 @@ while(hero.isAlive === true){
     }
 }
 alert("Votre Héros a bien combattu mais les monstres ont étaient plus forts !!!")
-alert("Vous avez battu "+monsterKo+" monstres")
-//window.prompt()
+alert("Vous avez battu "+monsterKo+" monstres");
