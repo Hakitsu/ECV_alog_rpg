@@ -1,10 +1,7 @@
 class Guerrier {
-    
+
     constructor(selector) {
-<<<<<<< .merge_file_a08292
     this.name = "guerrier"
-=======
->>>>>>> .merge_file_a04080
     this.container = document.querySelector(selector);
     this.lifeMax = 100;
     this.life = 100;
@@ -29,13 +26,13 @@ class Guerrier {
 
         console.log("Guerrier a gagné " , exp , " en tuant le monstre, son expérience est maintenant de ", this.experience , " / ", this.experienceMax)
     }
-    
+
     attack() {  // quand il attaque
         probaEchec = Math.random() * (11 - 1) + 1;
         if(probaEchec === 5){
             console.log("Guerrier a attaqué le monstre ! Il a raté son attaque ");
             return 0;
-    
+
         }
         console.log("Guerrier a attaqué le monstre ! Le monstre a subit ", this.attackCaC , " dégats ")
         return this.attackCaC
@@ -49,7 +46,7 @@ class Guerrier {
         }
 
         console.log("Guerrier a été touché , il a subit  " , damageRecieved);
-           
+
 
     }
 
@@ -61,12 +58,8 @@ class Guerrier {
             this.life = this.life + 100 ;
         }
 
-<<<<<<< .merge_file_a08292
-        console.log("Guerrier s'est soigné, ses PV sont maintenant de   " , this.life);
-=======
         console.log("Guerrier s'est soigné, ses PV sont maintentant de   " , this.life);
->>>>>>> .merge_file_a04080
-        
-    }   
-    
+
+    }
+
 }
