@@ -20,13 +20,13 @@ class Guerrier {
     setExperience(exp, gold){  // quand il tue un monstre
         this.gold = this.gold + gold;
         console.log("Argent : " + this.gold)
-        if(this.experienceMax < this.experience + exp){
+        if(this.experienceMax <= this.experience + exp){
             this.lvl = this.lvl +1;
             this.experience = (this.experience + exp ) - this.experienceMax;
             this.experienceMax = this.experienceMax + 50;
             console.log("Le guerrier est monté au niveau " , this.lvl);
 
-            let action =  window.prompt("Voulez-vous achetez une potion pour 100 golds ? (oui / non) ")
+            let action =  window.prompt("Voulez-vous achetez une potion pour 100 golds ? (oui / non) ","oui")
             if(action === "oui"){
                 if(this.gold >= 100){
                     this.gold = this.gold - 100;
