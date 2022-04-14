@@ -1,7 +1,10 @@
 class Guerrier {
     
     constructor(selector) {
+<<<<<<< .merge_file_a08292
     this.name = "guerrier"
+=======
+>>>>>>> .merge_file_a04080
     this.container = document.querySelector(selector);
     this.lifeMax = 100;
     this.life = 100;
@@ -58,7 +61,11 @@ class Guerrier {
             this.life = this.life + 100 ;
         }
 
+<<<<<<< .merge_file_a08292
         console.log("Guerrier s'est soigné, ses PV sont maintenant de   " , this.life);
+=======
+        console.log("Guerrier s'est soigné, ses PV sont maintentant de   " , this.life);
+>>>>>>> .merge_file_a04080
         
     }   
     

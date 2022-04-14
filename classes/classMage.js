@@ -1,7 +1,10 @@
 class Mage {
     
     constructor(selector) {
+<<<<<<< .merge_file_a13256
         this.name = "mage"
+=======
+>>>>>>> .merge_file_a14228
         this.container = document.querySelector(selector);
         this.lifeMax = 80;
         this.life = 80;
@@ -25,19 +28,26 @@ class Mage {
         else{
             this.experience = this.experience + exp;
         }
+<<<<<<< .merge_file_a13256
         console.log("Mage a gagné " , exp , " en tuant le monstre, son expérience est maintenant de ", this.experience , " / ", this.experienceMax)
    
+=======
+>>>>>>> .merge_file_a14228
     }
     
     attack(type = "CaC") {  // quand il attaque
         probaEchec = Math.random() * (11 - 1) + 1;
         if(probaEchec === 5){
+<<<<<<< .merge_file_a13256
             console.log("Mage a attaqué le monstre ! Il a raté son attaque ");
            
+=======
+>>>>>>> .merge_file_a14228
             return 0;
         }
         if(type === "sort" ){
             if(this.mana - 10 < 0){
+<<<<<<< .merge_file_a13256
                 console.log("Mage a attaqué le monstre ! Pas assez de mana, l'attaque a échoué")
        
                 return 0;
@@ -49,6 +59,13 @@ class Mage {
         }
         console.log("Mage a attaqué le monstre ! Le monstre a subit ", this.attackCaC , " dégats ")
        
+=======
+                return 0;
+            }
+            return this.attackMagic;
+
+        }
+>>>>>>> .merge_file_a14228
         return this.attackCaC;
     }
 
@@ -58,8 +75,11 @@ class Mage {
         if(this.life < 0 ){
             this.isAlive = false;
         }
+<<<<<<< .merge_file_a13256
         console.log("Mage a été touché , il a subit  " , damageRecieved);
            
+=======
+>>>>>>> .merge_file_a14228
 
     }
 
@@ -70,9 +90,12 @@ class Mage {
         else{
             this.life = this.life + 100 ;
         }
+<<<<<<< .merge_file_a13256
 
         console.log("Mage s'est soigné, ses PV sont maintenant de   " , this.life);
         
+=======
+>>>>>>> .merge_file_a14228
     }   
     
 }
