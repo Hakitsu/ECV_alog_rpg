@@ -25,15 +25,16 @@ class Gluant {
         if(probaEchec === 5){
             return 0;
         }
-        return this.attack
+        return this.attackCaC
     }
 
     touchByAttack(damageRecieved){  // quand il est attaqué
         this.life = this.life - damageRecieved
-
-        if(this.life < 0 ){
+        if(this.life <= 0 ){
             this.isAlive = false;
-            
+            this.life = 0;
+        }else{
+            console.log("Il lui reste "+this.life+" au "+this.name);
         }
 
     }

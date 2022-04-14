@@ -16,16 +16,17 @@ class Mage {
 
     }
 
-    set setExperience(exp){  // quand il tue un monstre
+    setExperience(exp){  // quand il tue un monstre
         if(this.experienceMax < this.experience + exp){
             this.lvl = this.lvl +1;
-            this.experienceMax = this.experienceMax + 50;
             this.experience = (this.experience + exp ) - this.experienceMax;
+            this.experienceMax = this.experienceMax + 50;
+            console.log("Le mage est monté au niveau " , this.lvl);
         }
         else{
             this.experience = this.experience + exp;
         }
-        console.log("Mage a gagné " , exp , " en tuant le monstre, son expérience est maintenant de ", this.experience , " / ", this.experienceMax)
+        console.log("Mage a gagné" , exp,"exp en tuant le monstre, son expérience est maintenant de ", this.experience , " / ", this.experienceMax)
 
     }
 

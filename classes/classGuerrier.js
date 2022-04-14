@@ -16,15 +16,15 @@ class Guerrier {
     setExperience(exp){  // quand il tue un monstre
         if(this.experienceMax < this.experience + exp){
             this.lvl = this.lvl +1;
-            this.experienceMax = this.experienceMax + 50;
             this.experience = (this.experience + exp ) - this.experienceMax;
-            console.log("Guerrier est monté au niveau " , this.lvl);
+            this.experienceMax = this.experienceMax + 50;
+            console.log("Le guerrier est monté au niveau " , this.lvl);
         }
         else{
             this.experience = this.experience + exp;
         }
 
-        console.log("Guerrier a gagné " , exp , " en tuant le monstre, son expérience est maintenant de ", this.experience , " / ", this.experienceMax)
+        console.log("Guerrier a gagné" , exp ," exp en tuant le monstre, son expérience est maintenant de ", this.experience , " / ", this.experienceMax)
     }
 
     attack() {  // quand il attaque
@@ -41,12 +41,12 @@ class Guerrier {
 
     touchByAttack(damageRecieved){  // quand il est attaqué
         this.life = this.life - damageRecieved
-
-        if(this.life < 0 ){
+        if(this.life <= 0 ){
             this.isAlive = false;
         }
-
-        console.log("Guerrier a été touché , il a subit  " , damageRecieved);
+        
+        console.log("Guerrier a été touché , il a subit", damageRecieved, "de dégats");
+        console.log("Il lui reste "+this.life+" PV");
 
 
     }
@@ -62,5 +62,4 @@ class Guerrier {
         console.log("Guerrier s'est soigné, ses PV sont maintentant de   " , this.life);
 
     }
-
 }
