@@ -42,6 +42,7 @@ while(hero.isAlive === true){
             }else if (action.toLowerCase() === "sort") {
                 let dmg = hero.attack("sort")
                 monstre.touchByAttack(dmg)
+                console.log("Mana restant :",hero.mana);
             }
             else{
                 let dmg = hero.attack()
