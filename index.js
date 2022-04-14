@@ -45,21 +45,21 @@ while(hero.isAlive === true){
         }
 
         if(hero.name === "mage"){
-            let action =  window.prompt("Que voulez vous faire ? soin / sort / CaC ")
+            let action =  window.prompt("Que voulez vous faire ? soin / sort / CaC","sort")
             while(action.toLowerCase() !== "soin" && action.toLowerCase() !== "sort" && action.toLowerCase() !== "cac"   ){
-                 action =  window.prompt("Que voulez vous faire ? soin / sort / CaC ")
+                 action =  window.prompt("Que voulez vous faire ? soin / sort / CaC","sort")
             }
             if(action.toLowerCase() === "soin"){
                 hero.heal()
             }
-            else if(action.toLowerCase() !== "cac"){
+            else if(action.toLowerCase() === "cac"){
                 let dmg = hero.attack() 
                 monstre.touchByAttack(dmg)
             }
             else {
                 let dmg = hero.attack("sort") ;
                 monstre.touchByAttack(dmg)
-                console.log("Mana restant : "+this.mana);
+                console.log("Mana restant :",hero.mana);
             }
         }
 

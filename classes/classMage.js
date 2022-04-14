@@ -30,25 +30,25 @@ class Mage {
 
     }
 
-    attack(type = "CaC") {  // quand il attaque
+    attack(type) {  // quand il attaque
         probaEchec = Math.random() * (11 - 1) + 1;
         if(probaEchec === 5){
-            console.log("Mage a attaqué le monstre ! Il a raté son attaque ");
+            console.log("Mage a attaqué le monstre !\n Il a raté son attaque ");
 
             return 0;
         }
         if(type === "sort" ){
             if(this.mana - 10 < 0){
-                console.log("Mage a attaqué le monstre ! Pas assez de mana, l'attaque a échoué")
+                console.log("Mage a attaqué le monstre !\n Pas assez de mana, l'attaque a échoué")
 
                 return 0;
             }
-            console.log("Mage a attaqué le monstre ! Le monstre a subit ", this.attackMagic , " dégats ")
-
+            console.log("Mage a attaqué le monstre !\nLe monstre a subit ", this.attackMagic , " dégats ")
+            this.mana -= 10;
             return this.attackMagic;
 
         }
-        console.log("Mage a attaqué le monstre ! Le monstre a subit ", this.attackCaC , " dégats ")
+        console.log("Mage a attaqué le monstre !\nLe monstre a subit ", this.attackCaC , " dégats ")
 
         return this.attackCaC;
     }
@@ -59,7 +59,7 @@ class Mage {
         if(this.life < 0 ){
             this.isAlive = false;
         }
-        console.log("Mage a été touché , il a subit  " , damageRecieved);
+        console.log("Mage a été touché, il a subit", damageRecieved, "PV");
            
 
     }
