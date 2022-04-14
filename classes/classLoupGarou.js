@@ -5,7 +5,7 @@ class LoupGarou {
         this.container = document.querySelector(selector);
         this.life = 30;
         this.attackCaC = 10;
-        this.experience = 10;
+        this.experience = 30;
         this.isAlive = true;
     }
 
@@ -34,7 +34,7 @@ class LoupGarou {
             this.isAlive = false;
             this.life = 0;
         }else{
-            console.log(this.name + ": " + this.life," PV ");
+            console.log(this.name , " :" + this.life,"PV ");
         }
     }
     

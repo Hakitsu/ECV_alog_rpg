@@ -5,7 +5,7 @@ class Gluant {
         this.container = document.querySelector(selector);
         this.life = 80;
         this.attackCaC = 30;
-        this.experience = 40;
+        this.experience = 60;
         this.isAlive = true;
     }
 
@@ -34,7 +34,7 @@ class Gluant {
             this.isAlive = false;
             this.life = 0;
         }else{
-            console.log(this.name + ": " + this.life," PV ");
+            console.log(this.name , " :" , this.life,"PV ");
         }
 
     }

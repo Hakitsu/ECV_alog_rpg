@@ -32,7 +32,7 @@ class Mage {
                 if(this.gold >= 100){
                     this.gold = this.gold - 100;
                     this.nbPotion = this.nbPotion + 1;
-                    console.log("vous avez maintenant : " + this.nbPotion + " potions et " + this.gold + " argents")
+                    console.log("vous avez maintenant :" , this.nbPotion , "potions et" , this.gold , " argents")
                 }
                 else {
                     alert("Vous n'avez pas assez d'argent !")
@@ -42,7 +42,7 @@ class Mage {
         else{
             this.experience = this.experience + exp;
         }
-        console.log("Mage a gagné" , exp,"exp en tuant le monstre, son expérience est maintenant de ", this.experience , " / ", this.experienceMax , " xp")
+        console.log("Mage a gagné" , exp,"exp en tuant le monstre, son expérience est maintenant de", this.experience , "/", this.experienceMax , "xp")
 
     }
 
@@ -59,12 +59,12 @@ class Mage {
 
                 return 0;
             }
-            console.log("Mage a attaqué le monstre !\nLe monstre a subit ", this.attackMagic , " dégats ")
+            console.log("Mage a attaqué le monstre !\nLe monstre a subit", this.attackMagic , "dégats ")
             this.mana -= 10;
             return this.attackMagic;
 
         }
-        console.log("Mage a attaqué le monstre !\nLe monstre a subit ", this.attackCaC , " dégats ")
+        console.log("Mage a attaqué le monstre !\nLe monstre a subit", this.attackCaC , "dégats ")
 
         return this.attackCaC;
     }
@@ -75,8 +75,8 @@ class Mage {
         if(this.life < 0 ){
             this.isAlive = false;
         }
-        console.log("Mage a été touché, il a subit", damageRecieved, "dégats");
-        console.log(this.life+ " / " + this.lifeMax + "PV");
+        console.log("Mage a été touché.\nIl a subit", damageRecieved, "dégats");
+        console.log(this.life, "/",  this.lifeMax , "PV");
            
 
     }

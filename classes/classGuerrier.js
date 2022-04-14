@@ -31,7 +31,7 @@ class Guerrier {
                 if(this.gold >= 100){
                     this.gold = this.gold - 100;
                     this.nbPotion = this.nbPotion + 1;
-                    console.log("vous avez maintenant : " + this.nbPotion + " potions et " + this.gold + " argents")
+                    console.log("vous avez maintenant : " , this.nbPotion , "potions et" , this.gold , " argents")
                 }
                 else {
                     alert("Vous n'avez pas assez d'argent !")
@@ -44,7 +44,7 @@ class Guerrier {
             this.experience = this.experience + exp;
         }
 
-        console.log("Guerrier a gagné" , exp ," exp en tuant le monstre.\nson expérience est maintenant de ", this.experience , " / ", this.experienceMax,"exp")
+        console.log("Guerrier a gagné" , exp ," exp en tuant le monstre.\nson expérience est maintenant de", this.experience , "/", this.experienceMax,"exp")
     }
 
     attack(type) {  // quand il attaque
@@ -69,7 +69,7 @@ class Guerrier {
             console.log("Guerrier a attaqué le monstre ! \nIl a raté son attaque ");
             return 0;
         }
-        console.log("Guerrier a attaqué le monstre ! \nLe monstre a subit ", this.attackCaC , " dégats ")
+        console.log("Guerrier a attaqué le monstre ! \nLe monstre a subit", this.attackCaC , "dégats ")
         return this.attackCaC
     }
 
@@ -83,8 +83,8 @@ class Guerrier {
             this.isAlive = false;
         }
 
-        console.log("Guerrier a été touché.\n il a subit", damageRecieved, "de dégats");
-        console.log(this.life+ " / " + this.lifeMax + "PV");
+        console.log("Guerrier a été touché.\nIl a subit", damageRecieved, "de dégats");
+        console.log(this.life, "/" , this.lifeMax , "PV");
 
 
     }

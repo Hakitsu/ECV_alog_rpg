@@ -5,7 +5,7 @@ class Zombie {
         this.container = document.querySelector(selector);
         this.life = 50;
         this.attackCaC = 20;
-        this.experience = 20;
+        this.experience = 40;
         this.isAlive = true;
     }
 
@@ -34,7 +34,7 @@ class Zombie {
             this.isAlive = false;
             this.life = 0;
         }else{
-            console.log(this.name + ": " + this.life," PV ");
+            console.log(this.name , " :" + this.life,"PV ");
         }
 
     }
