@@ -34,7 +34,7 @@ class LoupGarou {
             this.isAlive = false;
             this.life = 0;
         }else{
-            console.log("Il lui reste",this.life,"au "+this.name);
+            console.log(this.name + ": " + this.life," PV ");
         }
     }
     

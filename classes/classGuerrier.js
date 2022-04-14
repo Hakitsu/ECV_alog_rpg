@@ -42,7 +42,7 @@ class Guerrier {
             this.experience = this.experience + exp;
         }
 
-        console.log("Guerrier a gagné" , exp ," exp en tuant le monstre, son expérience est maintenant de ", this.experience , " / ", this.experienceMax)
+        console.log("Guerrier a gagné" , exp ," exp en tuant le monstre, son expérience est maintenant de ", this.experience , " / ", this.experienceMax , " xp")
     }
 
     attack() {  // quand il attaque
@@ -63,7 +63,7 @@ class Guerrier {
         }
         
         console.log("Guerrier a été touché , il a subit", damageRecieved, "de dégats");
-        console.log("Il lui reste "+this.life+" PV");
+        console.log(this.life+ " / " + this.lifeMax + "PV");
 
 
     }

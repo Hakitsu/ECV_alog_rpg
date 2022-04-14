@@ -13,20 +13,36 @@ class Mage {
         this.isAlive = true;
         this.mana = 100;
         this.attackMagic = 50;
+        this.gold = 0;
+        this.nbPotion = 1;
 
     }
 
-    setExperience(exp){  // quand il tue un monstre
+    setExperience(exp, gold){  // quand il tue un monstre
+        this.gold = this.gold + gold; 
+        console.log("Argent : " + this.gold)
         if(this.experienceMax < this.experience + exp){
             this.lvl = this.lvl +1;
             this.experience = (this.experience + exp ) - this.experienceMax;
             this.experienceMax = this.experienceMax + 50;
             console.log("Le mage est monté au niveau " , this.lvl);
+
+            let action =  window.prompt("Voulez-vous achetez une potion pour 100 golds ? (oui / non) ")
+            if(action === "oui"){
+                if(this.gold >= 100){
+                    this.gold = this.gold - 100;
+                    this.nbPotion = this.nbPotion + 1;
+                    console.log("vous avez maintenant : " + this.nbPotion + " potions et " + this.gold + " argents")
+                }
+                else {
+                    alert("Vous n'avez pas assez d'argent !")
+                }
+            }
         }
         else{
             this.experience = this.experience + exp;
         }
-        console.log("Mage a gagné" , exp,"exp en tuant le monstre, son expérience est maintenant de ", this.experience , " / ", this.experienceMax)
+        console.log("Mage a gagné" , exp,"exp en tuant le monstre, son expérience est maintenant de ", this.experience , " / ", this.experienceMax , " xp")
 
     }
 
@@ -59,21 +75,28 @@ class Mage {
         if(this.life < 0 ){
             this.isAlive = false;
         }
-        console.log("Mage a été touché, il a subit", damageRecieved, "PV");
+        console.log("Mage a été touché, il a subit", damageRecieved, "dégats");
+        console.log(this.life+ " / " + this.lifeMax + "PV");
            
 
     }
 
     heal() {  // quand il se soigne
-        if(this.lifeMax < this.life + 100){
-            this.life = this.lifeMax;
+        if(this.nbPotion > 0){
+            if(this.lifeMax < this.life + 100){
+                this.life = this.lifeMax;
+            }
+              else{
+                this.life = this.life + 100 ;
+            }
+            this.nbPotion = this.nbPotion - 1;
+            console.log("Mage s'est soigné, ses PV sont maintenant de   " , this.life);
+
         }
         else{
-            this.life = this.life + 100 ;
+            console.log("Mage ne peut pas se soigner, il n'a plus de potion !")
         }
-
-        console.log("Mage s'est soigné, ses PV sont maintenant de   " , this.life);
-
     }
+
 
 }

@@ -24,7 +24,9 @@ var monstre = getMonster();
 console.log("Un " + monstre.name+" apparait !!! ");
 
 let tour = "H";
-var monsterKo = 0
+var gluantKo = 0;
+var loupKo = 0;
+var zombieKo = 0;
 var probaEchec = 0
 
 while(hero.isAlive === true){
@@ -65,7 +67,19 @@ while(hero.isAlive === true){
 
         if(monstre.isAlive === false){
             hero.setExperience(monstre.experience , 50)
-            monsterKo += 1;
+
+            if(monstre.name === "Gluant"){
+                gluantKo += 1;
+            }
+
+            if(monstre.name === "Loup-Garou"){
+                loupKo += 1;
+            }
+
+            if(monstre.name === "Zombie"){
+                zombieKo += 1;
+            }
+           
             monstre = getMonster();
             console.log("un "+monstre.name+" apparait et vous défonce votre gueule (cheh)");
             // TODO faire spawn nouveau monstre
@@ -82,5 +96,5 @@ while(hero.isAlive === true){
     }
 }
 alert("Votre Héros a bien combattu mais les monstres ont étaient plus forts !!!")
-alert("Vous avez battu "+monsterKo+" monstres")
+alert("Vous avez battu "+ gluantKo + " gluants, " + loupKo + " loup-garous, " + zombieKo + " zombie")
 //window.prompt()
