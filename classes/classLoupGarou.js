@@ -1,9 +1,10 @@
 class LoupGarou {
     
     constructor(selector) {
+        this.name = "Loup-Garou";
         this.container = document.querySelector(selector);
         this.life = 30;
-        this.attack = 10;
+        this.attackCaC = 10;
         this.experience = 10;
         this.isAlive = true;
     }

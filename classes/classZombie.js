@@ -1,9 +1,10 @@
 class Zombie {
     
     constructor(selector) {
+        this.name = "Zombie";
         this.container = document.querySelector(selector);
         this.life = 50;
-        this.attack = 20;
+        this.attackCaC = 20;
         this.experience = 20;
         this.isAlive = true;
     }

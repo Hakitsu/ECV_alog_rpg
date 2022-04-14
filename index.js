@@ -7,6 +7,7 @@ function changeTour(tour){
     }
 }
 
+
 select_class = window.prompt("Choisissez votre classe : Guerrier / Mage ","Guerrier");
 while(select_class.toLowerCase() != "guerrier" && select_class.toLowerCase() != "mage"){
     console.log("Vous devez choissire entre guerrier ou mage");
@@ -21,13 +22,15 @@ if (select_class.toLowerCase() == "guerrier") {
 
 var monstre = getMonster();
 
+
 let tour = "H";
 
-while(hero.isAlive === true){
+var probaEchec = 0
 
+while(hero.isAlive === true){
     if(tour === "H"){
         if(hero.name === "guerrier"){
-            let action =  window.prompt("Que voulez vous faire ? soin / attaque")
+            let action =  window.prompt("Que voulez vous faire ? soin / attaque","attaque")
             while(action.toLowerCase() !== "soin" && action.toLowerCase() !== "attaque"  ){
                  action =  window.prompt("Que voulez vous faire ? soin / attaque")
             }
@@ -61,14 +64,16 @@ while(hero.isAlive === true){
         if(monstre.isAlive === false){
             hero.setExperience(monstre.experience)
             monstre = getMonster();
+            console.log("un "+monstre.name+" apparait et vous défonce votre gueule (cheh)");
             // TODO faire spawn nouveau monstre
         }
-        
+    tour = changeTour("H");   
 
     }
 
     else{ // si c'est tour du monstre
         var dmgM = monstre.attack();
         hero.touchByAttack(dmgM);
+        tour = changeTour("M");
     }
 }

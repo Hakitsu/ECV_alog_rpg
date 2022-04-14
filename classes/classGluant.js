@@ -1,9 +1,10 @@
 class Gluant {
     
     constructor(selector) {
+        this.name = "Gluant";
         this.container = document.querySelector(selector);
         this.life = 80;
-        this.attack = 30;
+        this.attackCaC = 30;
         this.experience = 40;
         this.isAlive = true;
     }

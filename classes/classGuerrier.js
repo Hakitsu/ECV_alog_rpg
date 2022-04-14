@@ -13,7 +13,7 @@ class Guerrier {
     this.isAlive = true;
     }
 
-    set setExperience(exp){  // quand il tue un monstre
+    setExperience(exp){  // quand il tue un monstre
         if(this.experienceMax < this.experience + exp){
             this.lvl = this.lvl +1;
             this.experienceMax = this.experienceMax + 50;
@@ -28,7 +28,8 @@ class Guerrier {
     }
 
     attack() {  // quand il attaque
-        probaEchec = Math.random() * (11 - 1) + 1;
+        var probaEchec = 0;
+        probaEchec = Math.floor(Math.random() * (11 - 1)) + 1;
         if(probaEchec === 5){
             console.log("Guerrier a attaqué le monstre ! Il a raté son attaque ");
             return 0;
