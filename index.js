@@ -100,4 +100,7 @@ while(hero.isAlive === true){
 }
 alert("Votre Héros a bien combattu mais les monstres ont étaient plus forts !!!")
 alert("Vous avez battu : \n"+ gluantKo + " gluants,\n" + loupKo + " loup-garous,\n" + zombieKo + " zombies")
-//window.prompt()
+retry = window.prompt("Voulez-vous rejouer ?","Oui")
+if (retry.toLowerCase() == "oui") {
+    location.reload();
+}
