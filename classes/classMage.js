@@ -5,7 +5,7 @@ class Mage {
         this.container = document.querySelector(selector);
         this.lifeMax = 80;
         this.life = 80;
-        this.defense = 80;
+        this.defense = 0.15;
         this.attackCaC = 30;
         this.experience = 0;
         this.lvl = 1;
@@ -70,6 +70,7 @@ class Mage {
     }
 
     touchByAttack(damageRecieved){  // quand il est attaqué
+        damageRecieved = Math.floor(damageRecieved*(1-this.defense));
         this.life = this.life - damageRecieved
 
         if(this.life <= 0 ){

@@ -5,7 +5,7 @@ class Guerrier {
     this.container = document.querySelector(selector);
     this.lifeMax = 100;
     this.life = 100;
-    this.defense = 100;
+    this.defense = 0.25;
     this.attackCaC = 50;
     this.experience = 0;
     this.lvl = 1;
@@ -74,8 +74,9 @@ class Guerrier {
     }
 
     touchByAttack(damageRecieved){  // quand il est attaqué
+        damageRecieved = Math.floor(damageRecieved*(1-this.defense));
         if (this.protection > 0) {
-            damageRecieved -= damageRecieved/2;
+            damageRecieved -= Math.floor(damageRecieved/2);
             this.protection -= 1
         }
         this.life = this.life - damageRecieved
