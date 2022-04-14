@@ -31,14 +31,14 @@ while(hero.isAlive === true){
         }
 
         if(hero.name === "mage"){
-            let action =  window.prompt("Que voulez vous faire ? soin / attaque magique / attaque CaC ")
+            let action =  window.prompt("Que voulez vous faire ? soin / sort / CaC ")
             while(action.toLowerCase() !== "soin" && action.toLowerCase() !== "attaque" && action.toLowerCase() !== "attaque cac"   ){
-                 action =  window.prompt("Que voulez vous faire ? soin / attaque magique / attaque CaC ")
+                 action =  window.prompt("Que voulez vous faire ? soin / sort / CaC ")
             }
             if(action.toLowerCase() === "soin"){
                 hero.heal()
             }
-            else if(action.toLowerCase() !== "attaque cac"){
+            else if(action.toLowerCase() !== "cac"){
                 let dmg = hero.attack() 
                 monstre.touchByAttack(dmg)
             }
@@ -50,6 +50,7 @@ while(hero.isAlive === true){
 
         if(monstre.isAlive === false){
             hero.setExperience(monstre.experience)
+            // TODO faire spawn nouveau monstre
         }
         
 
