@@ -64,7 +64,7 @@ while(hero.isAlive === true){
         }
 
         if(monstre.isAlive === false){
-            hero.setExperience(monstre.experience)
+            hero.setExperience(monstre.experience , 50)
             monsterKo += 1;
             monstre = getMonster();
             console.log("un "+monstre.name+" apparait et vous défonce votre gueule (cheh)");
