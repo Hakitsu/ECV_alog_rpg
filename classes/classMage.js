@@ -72,7 +72,7 @@ class Mage {
     touchByAttack(damageRecieved){  // quand il est attaqué
         this.life = this.life - damageRecieved
 
-        if(this.life < 0 ){
+        if(this.life <= 0 ){
             this.isAlive = false;
         }
         console.log("Mage a été touché.\nIl a subit", damageRecieved, "dégats");
