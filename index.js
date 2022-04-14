@@ -8,11 +8,11 @@ function changeTour(tour){
 }
 
 
-select_class = window.prompt("Choisissez votre classe : Guerrier / Mage ","Mage");
+select_class = window.prompt("Choisissez votre classe : Guerrier / Mage ","Guerrier");
 while(select_class.toLowerCase() != "guerrier" && select_class.toLowerCase() != "mage"){
     console.log("Vous devez choissire entre guerrier ou mage");
     select_class = window.prompt("Choisissez votre classe : Guerrier / Mage ","Guerrier");
-} 
+}
 
 if (select_class.toLowerCase() == "guerrier") {
     var hero = new Guerrier();
@@ -33,15 +33,18 @@ while(hero.isAlive === true){
     if(tour === "H"){
         console.log("-------------"+hero.name+"-------------")
         if(hero.name === "guerrier"){
-            let action =  window.prompt("Que voulez vous faire ? soin / attaque","attaque")
-            while(action.toLowerCase() !== "soin" && action.toLowerCase() !== "attaque"  ){
-                 action =  window.prompt("Que voulez vous faire ? soin / attaque")
+            let action =  window.prompt("Que voulez vous faire ? soin / sort / attaque","attaque")
+            while(action.toLowerCase() !== "soin" && action.toLowerCase() !== "sort" && action.toLowerCase() !== "attaque"  ){
+                 action =  window.prompt("Que voulez vous faire ? soin / sort / attaque","attaque")
             }
             if(action.toLowerCase() === "soin"){
                 hero.heal()
+            }else if (action.toLowerCase() === "sort") {
+                let dmg = hero.attack("sort")
+                monstre.touchByAttack(dmg)
             }
             else{
-                let dmg = hero.attack() 
+                let dmg = hero.attack()
                 monstre.touchByAttack(dmg)
             }
         }
@@ -55,7 +58,7 @@ while(hero.isAlive === true){
                 hero.heal()
             }
             else if(action.toLowerCase() === "cac"){
-                let dmg = hero.attack() 
+                let dmg = hero.attack()
                 monstre.touchByAttack(dmg)
             }
             else {
@@ -79,12 +82,12 @@ while(hero.isAlive === true){
             if(monstre.name === "Zombie"){
                 zombieKo += 1;
             }
-           
+
             monstre = getMonster();
             console.log("un "+monstre.name+" apparait et vous défonce votre gueule (cheh)");
             // TODO faire spawn nouveau monstre
         }
-    tour = changeTour("H");   
+    tour = changeTour("H");
 
     }
 
@@ -96,5 +99,5 @@ while(hero.isAlive === true){
     }
 }
 alert("Votre Héros a bien combattu mais les monstres ont étaient plus forts !!!")
-alert("Vous avez battu "+ gluantKo + " gluants, " + loupKo + " loup-garous, " + zombieKo + " zombie")
+alert("Vous avez battu : \n"+ gluantKo + " gluants,\n" + loupKo + " loup-garous,\n" + zombieKo + " zombies")
 //window.prompt()
