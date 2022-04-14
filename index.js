@@ -7,18 +7,6 @@ function changeTour(tour){
     }
 }
 
-function getMonster(){
-    number = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
-    if (getMonster() == 1) {
-        var monstre = new LoupGarou();
-    }else if (getMonster() == 2) {
-        var monstre = new Zombie();
-    }else{
-        var monstre = new Gluant();
-    }
-    return monstre;
-}
-
 select_class = window.prompt("Choisissez votre classe : Guerrier / Mage ","Guerrier");
 while(select_class.toLowerCase() != "guerrier" && select_class.toLowerCase() != "mage"){
     console.log("Vous devez choissire entre guerrier ou mage");
