@@ -1,14 +1,16 @@
-function changeTour(tour){
+function changeTour(tour){   
     if(tour === "H"){
+        // Monster tour
         return "M"
     }
     else{
+        //Player tour
         return "H"
     }
 }
-
-
+// Affiche dans la console : Le choix entre Mage et guerrier (Défaut : Guerrier)
 select_class = window.prompt("Choisissez votre classe : Guerrier / Mage ","Guerrier");
+// Si le choix est différent de guerrier ou mage, Alors on relance le prompt
 while(select_class.toLowerCase() != "guerrier" && select_class.toLowerCase() != "mage"){
     console.log("Vous devez choissire entre guerrier ou mage");
     select_class = window.prompt("Choisissez votre classe : Guerrier / Mage ","Guerrier");

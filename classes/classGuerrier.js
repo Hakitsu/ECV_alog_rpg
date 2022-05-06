@@ -108,5 +108,3 @@ class Guerrier {
 
     }
 }
-// competence -50% pendant 3 tours -> pas etre réutilisé
-// mana
