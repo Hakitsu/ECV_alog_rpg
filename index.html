@@ -2,11 +2,33 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="icon" href="favicon.ico" />
     <title></title>
   </head>
   <body>
-    <h1>Jeu dans la console</h1>
+    <audio id="play" src="assets/audio/Naissance.mp3" controls></audio>
+    <div id="createGame">
+      <h1>Jeu dans la console</h1>
+      <div>
+        <div>
+          Pseudo : 
+          <input id="pseudo" type="text">
+        </div>
+        <div>
+          Veuillez choisir une classe entre Guerrier ou Mage : 
+          <button id="warrior" value="warrior">Guerrier</button> / <button id="mage" value="mage">Mage</button>
+          <input type="hidden" id="classChoice" value="warrior">
+        </div>
+      </div>
+      <button id="startGame">Commencer la partie</button>
+    </div>
+    <div>
+      <button style="display: none;" type="hidden" id="newGame">Relancer ?</button>
+    </div>
   </body>
+
+
+  <script src="./classes/hero/classHero.js"></script>
   <script src="./classes/classGuerrier.js"></script>
   <script src="./classes/classMage.js"></script>
   <script src="./classes/classGluant.js"></script>
@@ -14,5 +36,6 @@
   <script src="./classes/classZombie.js"></script>
   <script src="monstre.js"></script>
   <script src="assets/jquery3.6.0.js"></script>
-  <script src="index.js"></script>
+  <script src="assets/index.js"></script>
+  <!--<script src="index.js"></script>-->
 </html>
