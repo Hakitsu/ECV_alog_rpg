@@ -10,6 +10,8 @@ $(document).on('click','#startGame',function(){
     profil = $("#pseudo").val();
     classe = $('#classChoice').val();
     createHero(classe,profil)
+    monstre = getMonster()
+    console.log(monstre.name);
 })
 
 $(document).on('click',' #newGame',function(){
@@ -37,19 +39,31 @@ function createHero(classe,pseudo) {
 
 function gameStart() {
     exp = 0
+    expMax = 50;
+    gold = 0;
+    lv = 0
 }
 
 function getMonster(){
     number = Math.floor(Math.random() * 3) + 1;
     if (number == 1) {
-        var monstre = LoupGarou;
+        var monstre = new Monstre("Loup-Garou",30,10,30);
     }else if (number == 2) {
-        var monstre = Zombie;
+        var monstre = new Monstre("Zombie",50,20,40);
     }else{
-        var monstre = Gluant;
+        var monstre = new Monstre("Gluant",80,30,60);
     }
     return monstre;
 }
 
+function monsterKO() {
+    exp += monstre.experience
+    if (exp > expMax) {
+        lvl += 1
+        exp = expMax - exp
+    }
+}
 
-
+function shop() {
+    // Ouverture pour acheter une potion
+}
