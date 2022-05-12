@@ -2,7 +2,61 @@ $(document).ready(function(){
     classe = 'warrior'
 })
 
+function createHero(classe,pseudo) {
+    if (classe == "warrior") {
+        var hero = new Hero(pseudo,100,0.25,50,40,classe)
+    }else{
+        var hero = new Hero(pseudo,80,0.15,30,100,classe)   
+    }
+}
 
+function gameStart() {
+    exp = 0
+    expMax = 50;
+    gold = 0;
+    lv = 0
+    potion = 1;
+    slimeKo = 0;
+    loupGarouKo = 0;
+    zombieKo = 0;
+    tour = "player"
+    heroLife = true;
+}
+
+function getMonster(){
+    number = Math.floor(Math.random() * 3) + 1;
+    if (number == 1) {
+        var monstre = new Monstre("Loup-Garou",30,10,30);
+    }else if (number == 2) {
+        var monstre = new Monstre("Zombie",50,20,40);
+    }else{
+        var monstre = new Monstre("Gluant",80,30,60);
+    }
+    return monstre;
+}
+
+function monsterKO() {
+    if (monstre.name == 'Loup-Garou') {
+        loupGarouKo += 1;
+    }else if (monstre.name == 'Zombie') {
+        zombieKo += 1;
+        
+    }else if (monstre.name == 'Gluant') {
+        slimeKo += 1;   
+    }else{
+        console.log("oui");
+    }
+    exp += monstre.experience
+    if (exp > expMax) {
+        lvl += 1
+        exp = expMax - exp
+    }
+}
+
+function shop() {
+    // Ouverture pour acheter une potion
+    
+}
 
 $(document).on('click','#startGame',function(){
     $('#createGame').hide();
@@ -26,44 +80,10 @@ $(document).on('click','#warrior, #mage',function(){
     classe = $(this).val();    
     $('#classChoice').val(classe)
 
-    console.log(classe);
 })
 
-function createHero(classe,pseudo) {
-    if (classe == "warrior") {
-        var hero = new Hero(pseudo,100,0.25,50,40,classe)
-    }else{
-        var hero = new Hero(pseudo,80,0.15,30,100,classe)   
-    }
-}
-
-function gameStart() {
-    exp = 0
-    expMax = 50;
-    gold = 0;
-    lv = 0
-}
-
-function getMonster(){
-    number = Math.floor(Math.random() * 3) + 1;
-    if (number == 1) {
-        var monstre = new Monstre("Loup-Garou",30,10,30);
-    }else if (number == 2) {
-        var monstre = new Monstre("Zombie",50,20,40);
-    }else{
-        var monstre = new Monstre("Gluant",80,30,60);
-    }
-    return monstre;
-}
-
-function monsterKO() {
-    exp += monstre.experience
-    if (exp > expMax) {
-        lvl += 1
-        exp = expMax - exp
-    }
-}
-
-function shop() {
-    // Ouverture pour acheter une potion
-}
+$(document).on('click','.tourPlayer', function(){
+    action = $(this).val();
+    console.log(action);
+      
+})
