@@ -4,9 +4,14 @@ $(document).ready(function(){
 
 function createHero(classe,pseudo) {
     if (classe == "warrior") {
-        var hero = new Hero(pseudo,100,0.25,50,40,classe)
+        sort = [{"name" : "shield"}]
+            
+        var hero = new Hero(pseudo,100,0.25,50,40,sort)
+        return hero
     }else{
-        var hero = new Hero(pseudo,80,0.15,30,100,classe)   
+        sort = [{"name" : "Foudre"},{"name" : "Feu" }]
+        var hero = new Hero(pseudo,80,0.15,30,100,sort) 
+        return hero  
     }
 }
 
@@ -63,7 +68,7 @@ $(document).on('click','#startGame',function(){
     $('#newGame').show();
     profil = $("#pseudo").val();
     classe = $('#classChoice').val();
-    createHero(classe,profil)
+    hero = createHero(classe,profil)
     monstre = getMonster()
     console.log(monstre.name);
 })
@@ -85,5 +90,17 @@ $(document).on('click','#warrior, #mage',function(){
 $(document).on('click','.tourPlayer', function(){
     action = $(this).val();
     console.log(action);
+    if (action == "sort") {
+        inputAction = $("#actionChoice").html();
+        console.log(inputAction);
+        retourn = '<input class="tourPlayer" type="button" value="retour"></input>'
+        $('.tourPlayer').last().after(retourn);
+        for (let i = 0; i < hero.sort.length; i++) {
+            const element = hero.sort[i]["name"];
+            spell = '<input class="tourPlayer" type="button" value="'+element+'"> '
+            console.log(spell);
+            $('.tourPlayer').last().after(spell);
+        }
+    }
       
 })
