@@ -93,8 +93,9 @@ $(document).on('click','.tourPlayer', function(){
     if (action == "sort") {
         inputAction = $("#actionChoice").html();
         console.log(inputAction);
+        $("#actionChoice").html("");
         retourn = '<input class="tourPlayer" type="button" value="retour"></input>'
-        $('.tourPlayer').last().after(retourn);
+        $('#actionChoice').append(retourn);
         for (let i = 0; i < hero.sort.length; i++) {
             const element = hero.sort[i]["name"];
             spell = '<input class="tourPlayer" type="button" value="'+element+'"> '
