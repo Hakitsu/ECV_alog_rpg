@@ -7,7 +7,7 @@ $(document).ready(function(){
 })
 
 function createHero(classe,pseudo) {
-    if (classe == "warrior") {
+    if (classe == "warrior") { 
         sort = [{"name" : "shield"}]
         var hero = null
         hero = new Hero(pseudo,100,0.25,50,40,sort)
@@ -117,6 +117,7 @@ $(document).on('click','#warrior, #mage',function(){
 
 })
 
+// FUNCTION PRINCIPAL
 $(document).on('click','.tourPlayer', function(){
     action = $(this).val();
     console.log(action);
@@ -226,3 +227,4 @@ function muteSong(is_muted) {
         $("#noMute").show()
     }
 }
+

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <link rel="icon" href="favicon.ico" />
     <link rel="stylesheet" href="assets/css/incex.css">
+    <link rel="stylesheet" href="assets/framework/bootstrap/css/bootstrap.css">
     <title></title>
   </head>
   <body>
@@ -16,7 +17,7 @@
         </div>
         <div>
           Veuillez choisir une classe entre Guerrier ou Mage (Guerrier est par defaut ): 
-          <button id="warrior" value="warrior">Guerrier</button> / <button id="mage" value="mage">Mage</button>
+          <button id="warrior" class="" value="warrior">Guerrier</button> / <button id="mage" value="mage">Mage</button>
           <input type="hidden" id="classChoice" value="warrior">
         </div>
       </div>
@@ -39,9 +40,9 @@
         </div>
         <div id="actionChoice">
           <div class="Star"></div>
-          <input class="tourPlayer" type="button" value="attaquer">
-          <input class="tourPlayer" type="button" value="sort">
-          <input class="tourPlayer" type="button" value="potion">
+          <input class="tourPlayer btn btn-primary" type="button" value="attaquer">
+          <input class="tourPlayer btn btn-primary" type="button" value="sort">
+          <input class="tourPlayer btn btn-primary" type="button" value="potion">
         </div>
       </div>
       <div style="display: none;" id="shop">
@@ -76,7 +77,7 @@
     </div>
   </body>
 
-
+  <script src="assets/framework/bootstrap/js/bootstrap.js"></script>
   <script src="./classes/hero/classHero.js"></script>
   <script src="./classes/monstre/classMonstre.js"></script>
   <script src="./classes/classGuerrier.js"></script>
