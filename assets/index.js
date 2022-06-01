@@ -23,11 +23,11 @@ function getMonster(){
     number = Math.floor(Math.random() * 3) + 1;
     var monstre = null
     if (number == 1) {
-        monstre = new Monstre("Loup-Garou",30,10,30);
+        monstre = new Monstre("Loup-Garou",30,10,30,20);
     }else if (number == 2) {
-        monstre = new Monstre("Zombie",50,20,40);
+        monstre = new Monstre("Zombie",50,20,40,30);
     }else{
-        monstre = new Monstre("Gluant",80,30,60);
+        monstre = new Monstre("Gluant",80,30,60,50);
     }
     $('#nameMonstre').text(monstre.name)
     $('#pvMonstre').text(monstre.life)
@@ -45,29 +45,26 @@ function monsterKO() {
         slimeKo += 1;
     }
     exp += monstre.experience
-    console.log("exp : "+exp);
-    i = 0
+    po += monstre.po
     while (exp >= expMax) {
         lv++
-        console.log("lv : "+lv);
         exp = exp - expMax;
-        console.log("new exp : " + exp);
-        i++
-        shop(i);
+        shop()
+
     }
+    $('#heroPo').text(po)
     $('#heroExp').text(exp)
     $('#heroLv').text(lv)
 }
-
-function shop() {
-    console.log("oui");
-    $('#shop').show()
+function shop(){
+    $("#shop").show()
+    $("#actionPlayer").hide()
 }
 
 $(document).on('click','#startGame',function(){
     exp = 0
     expMax = 50;
-    po = 0;
+    po = 50;
     lv = 0
     potion = 1;
     slimeKo = 0;
@@ -144,14 +141,15 @@ $(document).on('click','.tourPlayer', function(){
         $("#actionChoice").html(inputAction);
         
     }else if (action == "oui") {
-        potion -= 1;
         if (hero.life == hero.lifeMax) {
+            potion -= 1;
             alert("Génial le gaspi !")
         
-        }else if (potion < 0) {
+        }else if (potion <= 0) {
             alert("Tu vas boire quoi ?! du vide ?! ")
 
         }else{
+            potion -= 1;
             hero.heal();
             $('#heroPv').text(hero.life)
         }
@@ -176,9 +174,9 @@ function defense(){
         $("#slimeKO").text(slimeKo)
         $("#loupGarouKO").text(loupGarouKo)
         $("#zombieKO").text(zombieKo)
-        score = (slimeKo*5) + (zombieKo*3) + (loupGarouKo*1)  
+        score = lv*((slimeKo*5) + (zombieKo*3) + (loupGarouKo*1))  
         $("#score").text(score)
-        $("#actionPlayer").hide()
+        $("#hero, #shop, #monstre, #actionPlayer").hide()
         $("#gameOver").show()
     }
 }
@@ -196,13 +194,19 @@ function attaque(){
 
 $(document).on('click','.buyPotion',function (){
     buyPotion = $(this).val();
-    console.log(buyPotion);
     if (buyPotion == "oui" ) {
-        potion += 1
-        console.log(potion);
-        $('#heroPotion').text(potion)
+        if (po >= 100) {
+            potion += 1
+            po -= 100
+            $('#heroPo').text(po)
+            $('#heroPotion').text(potion)
+        }else{
+            alert("Pauvre ! tu me dégoute")
+        }
         $("#shop").hide()
+        $("#actionPlayer").show()
     }else{
         $("#shop").hide()
+        $("#actionPlayer").show()
     }
 })
