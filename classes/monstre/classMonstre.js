@@ -8,7 +8,6 @@ class Monstre{
     };
 
     takeDommage(dmg){
-        console.log("Je suis : " + this.name);
         this.life -= dmg
         if(this.life <= 0){
             return 0

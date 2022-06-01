@@ -8,30 +8,30 @@ $(document).ready(function(){
 function createHero(classe,pseudo) {
     if (classe == "warrior") {
         sort = [{"name" : "shield"}]
-            
-        var hero = new Hero(pseudo,100,0.25,50,40,sort)
+        var hero = null
+        hero = new Hero(pseudo,100,0.25,50,40,sort)
         return hero
     }else{
         sort = [{"name" : "Foudre"},{"name" : "Feu" }]
-        var hero = new Hero(pseudo,80,0.15,30,100,sort) 
+        hero = new Hero(pseudo,80,0.15,30,100,sort) 
         return hero  
     }
 }
 
 function getMonster(){
+    // appel au début pour savoir le premier monstre à affronté
     number = Math.floor(Math.random() * 3) + 1;
+    var monstre = null
     if (number == 1) {
-        var monstre = new Monstre("Loup-Garou",30,10,30);
+        monstre = new Monstre("Loup-Garou",30,10,30);
     }else if (number == 2) {
-        var monstre = new Monstre("Zombie",50,20,40);
+        monstre = new Monstre("Zombie",50,20,40);
     }else{
-        var monstre = new Monstre("Gluant",80,30,60);
+        monstre = new Monstre("Gluant",80,30,60);
     }
     $('#nameMonstre').text(monstre.name)
     $('#pvMonstre').text(monstre.life)
     $('#pvMaxMonstre').text(monstre.lifeMax)
-    console.log(monstre.name);
-    console.log("monstre life : "+monstre.life); 
     return monstre;
 }
 
@@ -41,20 +41,27 @@ function monsterKO() {
     }else if (monstre.name == 'Zombie') {
         zombieKo += 1;
         
-    }else if (monstre.name == 'Gluant') {
-        slimeKo += 1;   
     }else{
-        console.log("oui");
+        slimeKo += 1;
     }
     exp += monstre.experience
-    if (exp > expMax) {
-        lv += 1
-        exp = expMax - exp
+    console.log("exp : "+exp);
+    i = 0
+    while (exp >= expMax) {
+        lv++
+        console.log("lv : "+lv);
+        exp = exp - expMax;
+        console.log("new exp : " + exp);
+        i++
+        shop(i);
     }
+    $('#heroExp').text(exp)
+    $('#heroLv').text(lv)
 }
 
 function shop() {
-    $('#shop').show
+    console.log("oui");
+    $('#shop').show()
 }
 
 $(document).on('click','#startGame',function(){
@@ -70,7 +77,7 @@ $(document).on('click','#startGame',function(){
     profil = $("#pseudo").val();
     classe = $('#classChoice').val();
     $('#createGame').hide();
-    $('#newGame').show();
+    $('#game').show();
     hero = createHero(classe,profil)
     $('#heroLv').text(lv)
     $('#heroPv').text(hero.life)
@@ -87,7 +94,9 @@ $(document).on('click','#startGame',function(){
 
 $(document).on('click',' #newGame',function(){
     $('#createGame').show()
-    $('#newGame').hide()
+    $('#actionPlayer').show()
+    $('#game').hide()
+    $('#gameOver').hide()
 })
 
 
@@ -136,8 +145,6 @@ $(document).on('click','.tourPlayer', function(){
         
     }else if (action == "oui") {
         potion -= 1;
-        console.log(hero.life);
-        console.log(hero.lifeMax);
         if (hero.life == hero.lifeMax) {
             alert("Génial le gaspi !")
         
@@ -161,19 +168,18 @@ $(document).on('click','.tourPlayer', function(){
       
 })
 
-$(document).on('click','.buyPotion',function (potion){
-    buyPotion = $(this).val;
-    if (buyPotion == "oui" ) {
-        
-    }
-})
-
 function defense(){
     lifeHit = hero.defenseAttack(monstre.attackCaC);
-    console.log(lifeHit);
     $('#heroPv').text(lifeHit)
     if (lifeHit == 0) {
         // game over
+        $("#slimeKO").text(slimeKo)
+        $("#loupGarouKO").text(loupGarouKo)
+        $("#zombieKO").text(zombieKo)
+        score = (slimeKo*5) + (zombieKo*3) + (loupGarouKo*1)  
+        $("#score").text(score)
+        $("#actionPlayer").hide()
+        $("#gameOver").show()
     }
 }
 
@@ -182,8 +188,21 @@ function attaque(){
     monstreHit = monstre.takeDommage(dommage)
     if (monstreHit <= 0) {
         monsterKO(exp)
-        getMonster()
+        monstre = getMonster()
     }else{
         $('#pvMonstre').text(monstre.life)
     }
 }
+
+$(document).on('click','.buyPotion',function (){
+    buyPotion = $(this).val();
+    console.log(buyPotion);
+    if (buyPotion == "oui" ) {
+        potion += 1
+        console.log(potion);
+        $('#heroPotion').text(potion)
+        $("#shop").hide()
+    }else{
+        $("#shop").hide()
+    }
+})

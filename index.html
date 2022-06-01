@@ -25,10 +25,6 @@
     </div>
     
     <div id="game">
-
-      <div>
-        <button style="display: none;" type="hidden" id="newGame">Relancer ?</button>
-      </div>
       <div style="display: none;" id="hero">
         Level : <span id="heroLv"></span> | 
         Pv : <span id="heroPv"></span> / <span id="heroPvMax"></span> | 
@@ -48,7 +44,7 @@
           <input class="tourPlayer" type="button" value="potion">
         </div>
       </div>
-      <div id="shop">
+      <div style="display: none;" id="shop">
         <div>Acheter une potion pour 100 Po ?</div>
         <div>
           <button class="buyPotion" value="oui">Oui</button>
@@ -61,11 +57,17 @@
         </div>
 
       </div>
-    </div>
-    <div id="gameOver">
-      <p> Dommage, les monstres vous ont terraser ! </p>
-      <p> Cependant, vous reduit la population de slime de <span id="slimeKO"></span>, de Loup-Garou de <span id="loupGarouKO"></span> et de Zombie de <span id="ZombieKO"></span></p>
-      <p> Votre score s'élève à : <span></span></p>
+      <div id="resume">
+        
+      </div>
+      <div style="display: none;" id="gameOver">
+        <p> Dommage, les monstres vous ont terraser ! </p>
+        <p> Cependant, vous reduit la population de slime de <span id="slimeKO"></span>, de Loup-Garou de <span id="loupGarouKO"></span> et de Zombie de <span id="zombieKO"></span></p>
+        <p> Votre score s'élève à : <span id="score"></span></p>
+        <div>
+          <button id="newGame">Relancer ?</button>
+        </div>
+      </div>
     </div>
   </body>
 
