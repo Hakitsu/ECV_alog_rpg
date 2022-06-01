@@ -63,7 +63,10 @@ function shop(){
 }
 
 $(document).on('click','#startGame',function(){
+    //Music
     vid.play();
+    vid.volume = 0.5
+    //Player
     exp = 0
     expMax = 50;
     po = 50;
@@ -218,7 +221,7 @@ function muteSong(is_muted) {
         $("#noMute").hide()
         $("#mute").show()
     }else{
-        vid.volume=1
+        vid.volume=0.5
         $("#mute").hide()
         $("#noMute").show()
     }
