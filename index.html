@@ -7,7 +7,6 @@
     <title></title>
   </head>
   <body>
-    <audio id="play" src="assets/audio/Naissance.mp3" controls></audio>
     <div id="createGame">
       <h1>Jeu dans la console</h1>
       <div>
@@ -26,6 +25,7 @@
     
     <div style="display : none" id="game">
       <div style="display: none;" id="hero">
+        Pseudo : <span id="heroName"></span> | 
         Level : <span id="heroLv"></span> | 
         Pv : <span id="heroPv"></span> / <span id="heroPvMax"></span> | 
         Mana : <span id="heroMana"></span> / <span id="heroManaMax"></span> | 
@@ -68,6 +68,11 @@
           <button id="newGame">Relancer ?</button>
         </div>
       </div>
+    </div>
+    <div id="audio">
+      <audio style="display : none" id="play" src="assets/audio/Naissance.mp3" controls></audio>
+      <img id="noMute" width="50" src="assets/audio/Speaker_Icon.svg" onclick="muteSong(0)">
+      <img id="mute" width="50" style="display : none" src="assets/audio/Mute_Icon.svg" onclick="muteSong(1)">
     </div>
   </body>
 

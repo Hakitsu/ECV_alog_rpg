@@ -1,3 +1,4 @@
+var vid = document.getElementById("play");
 // Create Game
 
 // Game 
@@ -62,6 +63,7 @@ function shop(){
 }
 
 $(document).on('click','#startGame',function(){
+    vid.play();
     exp = 0
     expMax = 50;
     po = 50;
@@ -76,6 +78,7 @@ $(document).on('click','#startGame',function(){
     $('#createGame').hide();
     $('#game').show();
     hero = createHero(classe,profil)
+    $('#heroName').text(hero.name)
     $('#heroLv').text(lv)
     $('#heroPv').text(hero.life)
     $('#heroPvMax').text(hero.lifeMax)
@@ -98,8 +101,6 @@ $(document).on('click',' #newGame',function(){
 
 
 $(document).on('click','#warrior, #mage',function(){
-    //var vid = document.getElementById("play");
-    //vid.play();
     classe = $(this).val();
     if (classe == "warrior") {
         $("#warrior").addClass('classChoice');
@@ -210,3 +211,15 @@ $(document).on('click','.buyPotion',function (){
         $("#actionPlayer").show()
     }
 })
+
+function muteSong(is_muted) {
+    if (is_muted == 0) {
+        vid.volume=0
+        $("#noMute").hide()
+        $("#mute").show()
+    }else{
+        vid.volume=1
+        $("#mute").hide()
+        $("#noMute").show()
+    }
+}
