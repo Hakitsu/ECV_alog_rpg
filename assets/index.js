@@ -7,9 +7,9 @@ $(document).ready(function(){
 })
 
 function createHero(classe,pseudo) {
+    var hero = null
     if (classe == "warrior") { 
         sort = [{"name" : "shield"}]
-        var hero = null
         hero = new Hero(pseudo,100,0.25,50,40,sort)
         return hero
     }else{
@@ -106,11 +106,11 @@ $(document).on('click',' #newGame',function(){
 $(document).on('click','#warrior, #mage',function(){
     classe = $(this).val();
     if (classe == "warrior") {
-        $("#warrior").addClass('classChoice');
-        $("#mage").removeClass('classChoice');
+        $("#warrior").attr("disabled",true);
+        $("#mage").attr("disabled",false);
     }else{
-        $("#mage").addClass('classChoice');
-        $("#warrior").removeClass('classChoice');
+        $("#mage").attr("disabled",true);
+        $("#warrior").attr("disabled",false);
 
     }    
     $('#classChoice').val(classe)
@@ -136,8 +136,8 @@ $(document).on('click','.tourPlayer', function(){
         inputAction = $("#actionChoice").html();
         $("#actionChoice").html("");
         retourn = '<span> Utiliser la potion : </span>'
-        retourn += '<input class="tourPlayer" type="button" value="oui"></input>'
-        retourn += '<input class="tourPlayer" type="button" value="non"></input>'
+        retourn += '<input class="tourPlayer btn btn-success" type="button" value="oui"></input> '
+        retourn += '<input class="tourPlayer btn btn-danger" type="button" value="non"></input>'
         $('#actionChoice').append(retourn);
 
     }
@@ -179,7 +179,7 @@ function defense(){
         $("#slimeKO").text(slimeKo)
         $("#loupGarouKO").text(loupGarouKo)
         $("#zombieKO").text(zombieKo)
-        score = lv*((slimeKo*5) + (zombieKo*3) + (loupGarouKo*1))  
+        var score = lv*((slimeKo*5) + (zombieKo*3) + (loupGarouKo*1))  
         $("#score").text(score)
         $("#hero, #shop, #monstre, #actionPlayer").hide()
         $("#gameOver").show()

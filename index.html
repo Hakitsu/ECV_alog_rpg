@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="assets/framework/bootstrap/css/bootstrap.css">
     <title></title>
   </head>
-  <body>
+  <body style="text-align: center;">
     <div id="createGame">
       <h1>Jeu dans la console</h1>
       <div>
@@ -17,24 +17,47 @@
         </div>
         <div>
           Veuillez choisir une classe entre Guerrier ou Mage (Guerrier est par defaut ): 
-          <button id="warrior" class="" value="warrior">Guerrier</button> / <button id="mage" value="mage">Mage</button>
+          <button id="warrior" class="btn btn-danger" value="warrior">Guerrier</button> / <button id="mage" class="btn btn-primary" value="mage">Mage</button>
           <input type="hidden" id="classChoice" value="warrior">
         </div>
       </div>
-      <button id="startGame">Commencer la partie</button>
+      <button id="startGame" class="btn btn-success">Commencer la partie</button>
     </div>
     
     <div style="display : none" id="game">
-      <div style="display: none;" id="hero">
-        Pseudo : <span id="heroName"></span> | 
-        Level : <span id="heroLv"></span> | 
-        Pv : <span id="heroPv"></span> / <span id="heroPvMax"></span> | 
-        Mana : <span id="heroMana"></span> / <span id="heroManaMax"></span> | 
-        Po : <span id="heroPo"></span> | 
-        Expérience : <span id="heroExp"></span> / 50 | 
-        Potion : <span id="heroPotion"></span>
+      <div style="display: none;" class="" id="hero">
+        <div style="text-align: center;" class="container border border-primary">
+          <div class="row">
+            <div class="col">
+              <div> Pseudo : <span id="heroName"></span></div> 
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div> Level : <span id="heroLv"></span></div> 
+              <div> Potion : <span id="heroPotion"></span></div>
+            </div>
+            <div class="col">
+              <div> Pv : <span id="heroPv"></span> / <span id="heroPvMax"></span></div>
+              <div> Mana : <span id="heroMana"></span> / <span id="heroManaMax"></span></div>
+            </div>
+            <div class="col">
+              <div> Po : <span id="heroPo"></span></div>
+              <div> Expérience : <span id="heroExp"></span> / 50 </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div id="actionPlayer">
+
+      <div style="display: none;" class="container border border-danger" id="monstre">
+        ici un png de monstre
+        <div>
+
+          <span id="nameMonstre"></span> : <span id="pvMonstre"></span> / <span id="pvMaxMonstre"></span>
+        </div>
+      </div>
+
+      <div class="container border" id="actionPlayer">
         <div>
           Choisir une action : 
         </div>
@@ -45,19 +68,15 @@
           <input class="tourPlayer btn btn-primary" type="button" value="potion">
         </div>
       </div>
-      <div style="display: none;" id="shop">
+
+      <div style="display: none;" class="container border border-warning" id="shop">
         <div>Acheter une potion pour 100 Po ?</div>
         <div>
-          <button class="buyPotion" value="oui">Oui</button>
-          <button class="buyPotion" value="non">Non</button>
+          <button class="buyPotion btn btn-primary" value="oui">Oui</button>
+          <button class="buyPotion btn btn-danger" value="non">Non</button>
         </div>
       </div>
-      <div style="display: none;" id="monstre">
-        <div>
-          <span id="nameMonstre"></span> : <span id="pvMonstre"></span> / <span id="pvMaxMonstre"></span>
-        </div>
 
-      </div>
       <div id="resume">
 
       </div>
@@ -66,7 +85,7 @@
         <p> Cependant, vous reduit la population de slime de <span id="slimeKO"></span>, de Loup-Garou de <span id="loupGarouKO"></span> et de Zombie de <span id="zombieKO"></span></p>
         <p> Votre score s'élève à : <span id="score"></span></p>
         <div>
-          <button id="newGame">Relancer ?</button>
+          <button id="newGame" class="btn btn-primary">Relancer ?</button>
         </div>
       </div>
     </div>
