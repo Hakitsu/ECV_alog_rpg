@@ -64,7 +64,7 @@ function shop(){
 
 $(document).on('click','#startGame',function(){
     //Music
-    vid.play();
+    //vid.play();
     vid.volume = 0.5
     //Player
     exp = 0

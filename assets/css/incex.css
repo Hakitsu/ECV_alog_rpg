@@ -1,3 +1,9 @@
 .classChoice{
     border: solid green 3px;
 }
+
+.actionPlayerSize{
+    width: 110px;
+    background-repeat: no-repeat;
+    padding-left: 30px !important;
+}
