@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="assets/framework/bootstrap/css/bootstrap.css">
     <title></title>
   </head>
-  <body style="text-align: center;">
+  <body style="text-align: center; background: url('assets/background/japanHomeMenu.jpg');background-size: 100%;  ">
     <div id="createGame">
-      <h1>Jeu dans la console</h1>
+      <h1>Infinite RPG V0.1</h1>
       <div>
         <div>
           Pseudo : 
@@ -50,8 +50,10 @@
       </div>
 
       <div style="display: none;" class="container border border-danger" id="monstre">
-        ici un png de monstre
         <div>
+          <div class="pictureMonstre">
+            
+          </div>
 
           <span id="nameMonstre"></span> : <span id="pvMonstre"></span> / <span id="pvMaxMonstre"></span>
         </div>
@@ -77,9 +79,10 @@
         </div>
       </div>
 
-      <div id="resume">
+      <div style="display: none;" id="resume" class="container border border-danger">
 
       </div>
+
       <div style="display: none;" id="gameOver">
         <p> Dommage, les monstres vous ont terraser ! </p>
         <p> Cependant, vous reduit la population de slime de <span id="slimeKO"></span>, de Loup-Garou de <span id="loupGarouKO"></span> et de Zombie de <span id="zombieKO"></span></p>

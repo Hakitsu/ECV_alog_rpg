@@ -7,3 +7,19 @@
     background-repeat: no-repeat;
     padding-left: 30px !important;
 }
+
+#game, #createGame{
+    color: white;
+}
+
+#resume{
+    min-height: 50px;
+    height: 100px;
+    max-height: 150px;
+
+    overflow-y: auto;
+}
+
+.pictureMonstre{
+    height: 450px;
+}

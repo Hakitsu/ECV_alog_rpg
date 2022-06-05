@@ -4,6 +4,7 @@ var vid = document.getElementById("play");
 // Game 
 $(document).ready(function(){
     classe = 'warrior'
+    resume = $("#resume")
 })
 
 function createHero(classe,pseudo) {
@@ -23,13 +24,18 @@ function getMonster(){
     // appel au début pour savoir le premier monstre à affronté
     number = Math.floor(Math.random() * 3) + 1;
     var monstre = null
+    var imgMonstre = ""
     if (number == 1) {
         monstre = new Monstre("Loup-Garou",30,10,30,20);
+        imgMonstre = "assets/img/loup.png"
     }else if (number == 2) {
         monstre = new Monstre("Zombie",50,20,40,30);
+        imgMonstre = "assets/img/zombie1.png"
     }else{
         monstre = new Monstre("Gluant",80,30,60,50);
+        imgMonstre = "assets/img/slime.png"
     }
+    $('.pictureMonstre').html('<img src="'+imgMonstre+'" width="300">')
     $('#nameMonstre').text(monstre.name)
     $('#pvMonstre').text(monstre.life)
     $('#pvMaxMonstre').text(monstre.lifeMax)
@@ -76,6 +82,7 @@ $(document).on('click','#startGame',function(){
     loupGarouKo = 0;
     zombieKo = 0;
     potion = 1;
+    contenu = ""
     profil = $("#pseudo").val();
     classe = $('#classChoice').val();
     $('#createGame').hide();
@@ -91,8 +98,15 @@ $(document).on('click','#startGame',function(){
     $('#heroPotion').text(potion)
     $('#heroExp').text(exp)
     $('#hero').show()
-    monstre = getMonster();
+    monstre = getMonster(); 
+    contenu += "Un "+monstre.name+ " vient d'apparaitre <br>"; 
     $('#monstre').show();
+    $("body").css({
+        'background':'url("assets/background/japanTemplate.png")',
+        'background-size':'100%',
+    })
+    resume.show().append(contenu)
+    contenu = ""
 })
 
 $(document).on('click',' #newGame',function(){
@@ -157,6 +171,7 @@ $(document).on('click','.tourPlayer', function(){
             potion -= 1;
             hero.heal();
             $('#heroPv').text(hero.life)
+            resume.append(hero.name+"vient de récupérer ses pv max<br>")
         }
         $('#heroPotion').text(potion)
         
@@ -168,11 +183,15 @@ $(document).on('click','.tourPlayer', function(){
         attaque()
         defense()
     }
-      
+    autoScroll()
 })
 
 function defense(){
+    initialLife = hero.life
     lifeHit = hero.defenseAttack(monstre.attackCaC);
+    lifeLost = initialLife - lifeHit
+    contenu += monstre.name +" attaque "+ hero.name + " et inflige " + lifeLost + " de degat<br>"
+    resume.append(contenu)
     $('#heroPv').text(lifeHit)
     if (lifeHit == 0) {
         // game over
@@ -181,20 +200,34 @@ function defense(){
         $("#zombieKO").text(zombieKo)
         var score = lv*((slimeKo*5) + (zombieKo*3) + (loupGarouKo*1))  
         $("#score").text(score)
-        $("#hero, #shop, #monstre, #actionPlayer").hide()
+        $("#hero, #shop, #monstre, #actionPlayer, #resume").hide()
+        $("#resume").html("")
         $("#gameOver").show()
     }
+    contenu = ""
 }
 
 function attaque(){
     dommage = hero.attack()
+    beforeDommage = monstre.life
     monstreHit = monstre.takeDommage(dommage)
+    pvMonstreLost = beforeDommage-monstreHit;
+    if (beforeDommage == monstreHit) {
+        contenu += "L'attaque a échoué <br>"
+    }else{
+        contenu += hero.name+" a infliger " + pvMonstreLost + " pv <br>"  
+    }
     if (monstreHit <= 0) {
+        contenu += "Vous venez de battre un "+monstre.name+"<br>"
+        contenu += "Vous recevez : "+monstre.experience+" exp ainsi que "+monstre.po+"po <br>" 
         monsterKO(exp)
         monstre = getMonster()
+        contenu += "Un "+monstre.name+ " vient d'apparaitre <br>"; 
     }else{
         $('#pvMonstre').text(monstre.life)
-    }
+    } 
+    resume.append(contenu)
+    contenu = ""
 }
 
 $(document).on('click','.buyPotion',function (){
@@ -205,6 +238,7 @@ $(document).on('click','.buyPotion',function (){
             po -= 100
             $('#heroPo').text(po)
             $('#heroPotion').text(potion)
+            contenu += hero.name + " vient d'acheter une potion<br>"
         }else{
             alert("Pauvre ! tu me dégoute")
         }
@@ -214,6 +248,9 @@ $(document).on('click','.buyPotion',function (){
         $("#shop").hide()
         $("#actionPlayer").show()
     }
+    resume.append(contenu)
+    autoScroll()
+    contenu = ""
 })
 
 function muteSong(is_muted) {
@@ -228,3 +265,7 @@ function muteSong(is_muted) {
     }
 }
 
+function autoScroll(){
+    scrollAt = resume.prop('scrollHeight');
+    resume.scrollTop(scrollAt)
+}
