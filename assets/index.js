@@ -86,7 +86,7 @@ $(document).on('click','#startGame',function(){
     profil = $("#pseudo").val();
     classe = $('#classChoice').val();
     $('#createGame').hide();
-    $('#game').show();
+    $('#game').show().css("background","rgba(0,0,0,0.5)");
     hero = createHero(classe,profil)
     $('#heroName').text(hero.name)
     $('#heroLv').text(lv)
@@ -114,6 +114,10 @@ $(document).on('click',' #newGame',function(){
     $('#actionPlayer').show()
     $('#game').hide()
     $('#gameOver').hide()
+    $("body").css({
+        'background':'url("assets/background/japanHomeMenu.jpg")',
+        'background-size':'100%',
+    })
 })
 
 
@@ -171,7 +175,7 @@ $(document).on('click','.tourPlayer', function(){
             potion -= 1;
             hero.heal();
             $('#heroPv').text(hero.life)
-            resume.append(hero.name+"vient de récupérer ses pv max<br>")
+            resume.append(hero.name+" vient de récupérer ses pv max<br>")
         }
         $('#heroPotion').text(potion)
         
@@ -190,7 +194,7 @@ function defense(){
     initialLife = hero.life
     lifeHit = hero.defenseAttack(monstre.attackCaC);
     lifeLost = initialLife - lifeHit
-    contenu += monstre.name +" attaque "+ hero.name + " et inflige " + lifeLost + " de degat<br>"
+    contenu += monstre.name +" attaque "+ hero.name + " et inflige " + lifeLost + " de dégats<br>"
     resume.append(contenu)
     $('#heroPv').text(lifeHit)
     if (lifeHit == 0) {
@@ -203,6 +207,7 @@ function defense(){
         $("#hero, #shop, #monstre, #actionPlayer, #resume").hide()
         $("#resume").html("")
         $("#gameOver").show()
+        $("#game").css("background","")
     }
     contenu = ""
 }

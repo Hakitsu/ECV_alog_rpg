@@ -66,7 +66,7 @@
         <div id="actionChoice">
           <div class="Star"></div>
           <input style="background-image: url('assets/icon/sword.svg');" class="tourPlayer btn btn-primary actionPlayerSize" type="button" value="attaquer">
-          <input style="background-image: url('assets/icon/book.svg');" class="actionPlayerSize tourPlayer btn btn-primary" type="button" value="sort">
+          <input style="display: none ; background-image: url('assets/icon/book.svg');" class="actionPlayerSize tourPlayer btn btn-primary" type="button" value="sort">
           <input style="background-image: url('assets/icon/potion.svg');" class="actionPlayerSize tourPlayer btn btn-primary" type="button" value="potion">
         </div>
       </div>
@@ -84,8 +84,8 @@
       </div>
 
       <div style="display: none;" id="gameOver">
-        <p> Dommage, les monstres vous ont terraser ! </p>
-        <p> Cependant, vous reduit la population de slime de <span id="slimeKO"></span>, de Loup-Garou de <span id="loupGarouKO"></span> et de Zombie de <span id="zombieKO"></span></p>
+        <p> Dommage, les monstres vous ont terrassé ! </p>
+        <p> Cependant, vous venez de réduire la population de Slimes de <span id="slimeKO"></span>, de Loup-Garous de <span id="loupGarouKO"></span> et de Zombies de <span id="zombieKO"></span></p>
         <p> Votre score s'élève à : <span id="score"></span></p>
         <div>
           <button id="newGame" class="btn btn-primary">Relancer ?</button>
